@@ -79,14 +79,33 @@ class Game extends React.Component {
         });
     }
 
+    rowColPlaying (timeLine, curIndex) {
+        //Função que retorna a linha, coluna e se 'X' ou 'O' foi feito na jogada
+        //Para ser usado na funcionalidade 'viagem no tempo'
+        if (curIndex < 1) return null;
+        const a = timeLine[curIndex - 1].squares;
+        const b = timeLine[curIndex].squares;
+        let col, row, letter;
+        letter = (curIndex % 2 === 0 ? 'O' : 'X');
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] !== b[i]) {
+                row = Math.floor(i / 3) + 1;
+                col = (i % 3) + 1;
+                return "" + letter + " on row " + row + ", col " + col;
+            }
+        }
+        return null;
+    }
+
     render () {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
 
-        const moves = history.map((step, move) => {
+        const moves = history.map((step, move, timeLine) => {
             const desc = move ?
-                'Go to move #' + move :
+                //'Go to move #' + move :
+                'Go to move #' + move + ': ' + this.rowColPlaying(timeLine, move) :
                 'Go to game start';
             return (
                 <li key={move}>
