@@ -48,3 +48,27 @@ ol, ul {
 .game-info {
   margin-left: 20px;
 }
+
+.moves-list button{
+  width: 12rem;
+  height: 2.5rem;
+  border-style: none;
+  border-radius: 5px;
+  background-color: gray;
+  color: black;
+  font-size: 0.8rem;
+  margin: 5px;
+}
+
+.moves-list .bold {
+  font-weight: bold;
+}
+
+.moves-list .notBold {
+  opacity: 0.8;
+}
+
+.moves-list .notBold:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
