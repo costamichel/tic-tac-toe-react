@@ -72,3 +72,13 @@ ol, ul {
   opacity: 0.5;
   cursor: pointer;
 }
+
+.sort-toggle {
+  border: none;
+  background: #AAA;
+  color: #222;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 0 0 2rem 0;
+  margin: 10px 0 5px 0;
+}

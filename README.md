@@ -8,6 +8,7 @@ Para além do proposto no tutorial do site do React, foi implementado:
 - Exibição da descrição de cada jogada, indicando se X ou O foi marcado na referida linha/coluna
 - Botão em destaque para indicar qual jogada está mostrando
 - Otimização de código: renderizando tabuleiro automaticamente por laços
+- Alterar ordem de exibição das jogadas (ascendente/ascendente)
 
 ##### Como rodar:
 - Baixe este código do GitHub

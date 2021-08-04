@@ -51,6 +51,7 @@ class Game extends React.Component {
             }],
             stepNumber: 0,
             xIsNext: true,
+            sortVal: true,  /* true p/ jogadas mostradas na ordem ascendente */
         };
     }
 
@@ -110,7 +111,7 @@ class Game extends React.Component {
                 'Go to game start';
 
             return (
-                <li key={move}>
+                <li key={move + 5}>
                     <button onClick={() => this.jumpTo(move)}
                         //Altera o botão que está selecionado para negrito via CSS- classe "bold"
                         className={move === this.state.stepNumber ? 'bold' : 'notBold'}>
@@ -118,6 +119,7 @@ class Game extends React.Component {
                 </li>
             );
         });
+        if (!this.state.sortVal) moves.reverse();
 
         let status;
         if (winner) {
@@ -137,6 +139,9 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
+                    <div><button className="sort-toggle" onClick={() => this.setState({ sortVal: !this.state.sortVal })}>
+                        {this.state.sortVal ? "Change to descending order" : "Change to ascending order"}
+                    </button></div>
                     <ol className="moves-list">{moves}</ol>
                 </div>
             </div>
