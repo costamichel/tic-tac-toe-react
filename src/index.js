@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 function Square (props) {
+    let className = "square";
+    if (!props.color) alert("não tem cor");
+    else className += (" " + props.color);
+
     return (
-        <button className="square" onClick={props.onClick}>
+        <button className={className} onClick={props.onClick}>
             {props.value}
         </button>
     );
@@ -15,6 +19,7 @@ class Board extends React.Component {
         return (
             <Square
                 value={this.props.squares[i]}
+                color={this.props.winnerLine && (this.props.winnerLine.indexOf(i) !== -1) ? "color-win" : "color-normal"}
                 onClick={() => this.props.onClick(i)}
             />
         );
@@ -52,6 +57,7 @@ class Game extends React.Component {
             stepNumber: 0,
             xIsNext: true,
             sortVal: true,  /* true p/ jogadas mostradas na ordem ascendente */
+            winnerLine: null,
         };
     }
 
@@ -122,8 +128,12 @@ class Game extends React.Component {
         if (!this.state.sortVal) moves.reverse();
 
         let status;
+        let winnerLinePlay = null;
         if (winner) {
-            status = `Winner: ${winner}`;
+            status = `Winner: ${winner[0]}`;
+            if ((history.length - 1) === this.state.stepNumber) {
+                winnerLinePlay = winner[1];
+            }
         }
         else {
             status = `Next player: ${(this.state.xIsNext ? 'X' : 'O')}`;
@@ -134,6 +144,7 @@ class Game extends React.Component {
                 <div className="game-board">
                     <Board
                         squares={current.squares}
+                        winnerLine={winnerLinePlay}
                         onClick={(i) => this.handleClick(i)}
                     />
                 </div>
@@ -170,7 +181,7 @@ function calculateWinner (squares) {
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+            return [squares[a], lines[i]];
         }
     }
     return null;

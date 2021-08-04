@@ -9,6 +9,7 @@ Para além do proposto no tutorial do site do React, foi implementado:
 - Botão em destaque para indicar qual jogada está mostrando
 - Otimização de código: renderizando tabuleiro automaticamente por laços
 - Alterar ordem de exibição das jogadas (ascendente/ascendente)
+- Indicação da linha que definiu a vitória
 
 ##### Como rodar:
 - Baixe este código do GitHub

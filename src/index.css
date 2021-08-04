@@ -82,3 +82,7 @@ ol, ul {
   border-radius: 0 0 2rem 0;
   margin: 10px 0 5px 0;
 }
+
+.color-win {
+  background-color: yellow;
+}
