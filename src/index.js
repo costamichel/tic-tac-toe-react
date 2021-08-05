@@ -142,20 +142,31 @@ class Game extends React.Component {
 
         return (
             <div className="game">
-                <div className="game-board">
-                    <Board
-                        squares={current.squares}
-                        winnerLine={winnerLinePlay}
-                        onClick={(i) => this.handleClick(i)}
-                    />
+                <h1>Tic Tac Toe Game</h1>
+                <div className="wrap-1">
+                    <div className="game-info">
+                        <h3>Timeline</h3>
+                        <div><button className="sort-toggle" onClick={() => this.setState({ sortVal: !this.state.sortVal })}>
+                            {this.state.sortVal ? "Change to descending order" : "Change to ascending order"}
+                        </button></div>
+                        <ol className="moves-list">{moves}</ol>
+                    </div>
+                    <div className="game-board">
+                        <Board
+                            squares={current.squares}
+                            winnerLine={winnerLinePlay}
+                            onClick={(i) => this.handleClick(i)}
+                        />
+                    </div>
+                    <div className="game-info">
+                        <h2>{status}</h2>
+                    </div>
                 </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <div><button className="sort-toggle" onClick={() => this.setState({ sortVal: !this.state.sortVal })}>
-                        {this.state.sortVal ? "Change to descending order" : "Change to ascending order"}
-                    </button></div>
-                    <ol className="moves-list">{moves}</ol>
-                </div>
+                <h6>
+                    Developed by Michel Costa -
+                    <a href="https://github.com/costamichel/tic-tac-toe-react" target="_blank
+                    ">See on Github</a>
+                </h6>
             </div>
         );
     }
