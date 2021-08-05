@@ -11,6 +11,10 @@ Para além do proposto no tutorial do site do React, foi implementado:
 - Alterar ordem de exibição das jogadas (ascendente/ascendente)
 - Indicação da linha que definiu a vitória
 - Indicação quando houver empate
+- Estilização de elementos para melhor apresentação visual
+
+
+![Tic Tac Toe Game](https://i.imgur.com/5kROKsL.png)
 
 ##### Como rodar:
 - Baixe este código do GitHub
